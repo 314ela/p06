@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Roles</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <link rel="stylesheet" href="/assets/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/plugins.min.css" />
+    <link rel="stylesheet" href="/assets/kaiadmin.min.css" />
+    <link rel="stylesheet" href="/assets/demo.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main-panel">
+        <div class="container">
+          <div class="page-inner">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card" style="max-width: 900px; width: 100%;">
+                  <div class="card-header">
+                    <h4 class="card-title">Roles</h4>
+                    <a href="/roles/agregar" class="btn btn-primary" style="margin-top: 10px;">Agregar Rol</a>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table id="basic-datatables" class="display table table-striped table-hover">
+                        <thead>
+                          <tr>
+                            <th>Id Usuario</th>
+                            <th>Id Rol</th>
+                            <th>Correo Usuario</th>
+                            <th>Rol</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                          </tr>
+                        </thead>
+                        <tfoot>
+                          <tr>
+                            <th>Id Usuario</th>
+                            <th>Id Rol</th>
+                            <th>Correo Usuario</th>
+                            <th>Rol</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                          </tr>
+                        </tfoot>
+                        <tbody>
+                          <!-- Asegúrate de que el modelo esté pasando los datos correctamente -->
+                          <tr th:each="rol : ${roles}">
+                            <td th:text="${rol.id}"></td>
+                            <td th:text="${rol.nombre}"></td>
+                            <td th:text="${rol.correo}"></td>
+                            <td th:text="${rol.nombre}"></td> <!-- Suponiendo que 'rol' tiene nombre -->
+                            <td>
+                              <a th:href="@{/roles/editar/{id}(id=${rol.id})}" class="btn btn-warning">Editar</a>
+                            </td>
+                            <td>
+                              <a th:href="@{/roles/eliminar/{id}(id=${rol.id})}" class="btn btn-danger">Eliminar</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

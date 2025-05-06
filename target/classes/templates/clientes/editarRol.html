@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Editar Rol</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    
+    <link rel="stylesheet" href="/assets/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/plugins.min.css" />
+    <link rel="stylesheet" href="/assets/plugins.css" />
+    <link rel="stylesheet" href="/assets/kaiadmin.min.css" />
+    <link rel="stylesheet" href="/assets/demo.css" />
+    <link rel="stylesheet" href="/assets/demo.css.map" />
+    <link rel="stylesheet" href="/assets/fonts.css" />
+    <link rel="stylesheet" href="/assets/fonts.min.css" />
+    <link rel="stylesheet" href="/assets/kaiadmin.css" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">
+              <h3>Editar Rol</h3>
+            </div>
+            <div class="card-body">
+              <form th:action="@{/roles/editar}" method="POST">
+                <input type="hidden" name="id" th:value="${rol.id}" />
+                <div class="form-group">
+                  <label for="roleName">Nombre del Rol</label>
+                  <input type="text" class="form-control" id="roleName" name="roleName" th:value="${rol.nombre}" placeholder="Ingrese el nuevo nombre del rol" required />
+                </div>
+                <button type="submit" class="btn btn-success">Actualizar</button>
+                <a href="/roles/agregarRol" class="btn btn-danger">Cancelar</a>
+              </form>
+              <!-- Mensaje de éxito (opcional) -->
+              <div th:if="${message}" class="alert alert-success mt-3">
+                <span th:text="${message}"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

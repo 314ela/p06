@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Usuarios</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <link rel="stylesheet" href="/assets/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/plugins.min.css" />
+    <link rel="stylesheet" href="/assets/kaiadmin.min.css" />
+    <link rel="stylesheet" href="/assets/demo.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main-panel">
+        <div class="container">
+          <div class="page-inner">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card" style="max-width: 900px; width: 100%;">
+                  <div class="card-header">
+                    <h4 class="card-title">Usuarios</h4>
+                    <a href="/usuarios/agregar" class="btn btn-primary" style="margin-top: 10px;">Agregar Usuario</a>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table id="basic-datatables" class="display table table-striped table-hover">
+                        <thead>
+                          <tr>
+                            <th>Id Usuario</th>
+                            <th>Correo Usuario</th>
+                            <th>Password</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                          </tr>
+                        </thead>
+                        <tfoot>
+                          <tr>
+                            <th>Id Usuario</th>
+                            <th>Correo Usuario</th>
+                            <th>Password</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                          </tr>
+                        </tfoot>
+                        <tbody>
+                          <!-- Asegúrate de que el modelo esté pasando los datos correctamente -->
+                          <tr th:each="usuario : ${usuarios}">
+                            <td th:text="${usuario.id}"></td>
+                            <td th:text="${usuario.email}"></td>
+                            <td th:text="${usuario.password}"></td>
+                            <td>
+                              <a th:href="@{/usuarios/editar/{id}(id=${usuario.id})}" class="btn btn-warning">Editar</a>
+                            </td>
+                            <td>
+                              <a th:href="@{/usuarios/eliminar/{id}(id=${usuario.id})}" class="btn btn-danger">Eliminar</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

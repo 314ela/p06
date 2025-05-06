@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Formulario de Clientes</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    
+    <link rel="stylesheet" href="/assets/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/plugins.min.css" />
+    <link rel="stylesheet" href="/assets/plugins.css" />
+    <link rel="stylesheet" href="/assets/kaiadmin.min.css" />
+    <link rel="stylesheet" href="/assets/demo.css" />
+    <link rel="stylesheet" href="/assets/demo.css.map" />
+    <link rel="stylesheet" href="/assets/fonts.css" />
+    <link rel="stylesheet" href="/assets/fonts.min.css" />
+    <link rel="stylesheet" href="/assets/kaiadmin.css" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">
+              <h3>Formulario de Clientes</h3>
+            </div>
+            <div class="card-body">
+              <!-- Formulario para agregar un cliente -->
+              <form action="/clientes/agregar" method="POST">
+                
+                <!-- Campo opcional para ID cliente -->
+                <div class="form-group">
+                  <label for="id_cliente">ID Cliente (opcional)</label>
+                  <input type="number" class="form-control" id="id_cliente" name="id_cliente" placeholder="Ingrese el ID del cliente (dejar vacío para auto-generar)" min="1">
+                </div>
+
+                <div class="form-group">
+                  <label for="nombre_cliente">Nombre del Cliente</label>
+                  <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente" placeholder="Ingrese el nombre del cliente" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="correo">Correo Electrónico</label>
+                  <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingrese el correo electrónico del cliente" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="telefono">Teléfono</label>
+                  <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingrese el teléfono del cliente" required>
+                </div>
+
+                <div class="form-group">
+                  <button type="submit" class="btn btn-success">Guardar</button>
+                  <a href="/clientes" class="btn btn-danger">Cancelar</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

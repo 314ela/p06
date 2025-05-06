@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Clientes y Pedidos</title>
+  <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+  <link rel="stylesheet" href="/assets/bootstrap.min.css" />
+  <link rel="stylesheet" href="/assets/plugins.min.css" />
+  <link rel="stylesheet" href="/assets/kaiadmin.min.css" />
+  <link rel="stylesheet" href="/assets/demo.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <div class="main-panel">
+      <div class="container">
+        <div class="page-inner">
+          <div class="row">
+            <div class="col-md-12">
+
+              <!-- Tabla Clientes -->
+              <div class="card" style="max-width: 900px; width: 100%;">
+                <div class="card-header">
+                  <h4 class="card-title">Clientes</h4>
+                  <a href="/clientes/agregar" class="btn btn-primary float-right">Agregar Cliente</a>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table id="clientes-table" class="display table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th>Id Cliente</th>
+                          <th>Nombre</th>
+                          <th>Correo</th>
+                          <th>Teléfono</th>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="cliente : ${clientes}">
+                          <td th:text="${cliente.id_cliente}"></td>
+                          <td th:text="${cliente.nombre_cliente}"></td>
+                          <td th:text="${cliente.correo}"></td>
+                          <td th:text="${cliente.telefono}"></td>
+                          <td>
+                            <a th:href="@{/clientes/editar/{id}(id=${cliente.id_cliente})}" class="btn btn-warning btn-sm">Editar</a>
+                            <a th:href="@{/clientes/eliminar/{id}(id=${cliente.id_cliente})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este cliente?')">Eliminar</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tabla Pedidos -->
+              <div class="card" style="max-width: 900px; width: 100%; margin-top: 50px;">
+                <div class="card-header">
+                  <h4 class="card-title">Pedidos</h4>
+                  <a href="/pedidos/agregar" class="btn btn-primary float-right">Agregar Pedido</a>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table id="pedidos-table" class="display table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th>Id Pedido</th>
+                          <th>Fecha</th>
+                          <th>Total</th>
+                          <th>Estado</th>
+                          <th>Id Cliente</th>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="pedido : ${pedidos}">
+                          <td th:text="${pedido.id_pedido}"></td>
+                          <!-- Usamos #dates.format() para formatear la fecha -->
+                          <td th:text="${#dates.format(pedido.fecha, 'yyyy-MM-dd')}"></td>
+                          <td th:text="${pedido.total}"></td>
+                          <td th:text="${pedido.estado}"></td>
+                          <td th:text="${pedido.id_cliente}"></td>
+                          <td>
+                            <a th:href="@{/pedidos/editar/{id}(id=${pedido.id_pedido})}" class="btn btn-warning btn-sm">Editar</a>
+                            <a th:href="@{/pedidos/eliminar/{id}(id=${pedido.id_pedido})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este pedido?')">Eliminar</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
